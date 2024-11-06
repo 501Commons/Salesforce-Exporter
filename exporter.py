@@ -13,7 +13,7 @@ def main():
     client_emaillist = str(sys.argv[3])
 
     if len(sys.argv) < 4:
-        print ("Calling error - missing inputs.  Expecting " +
+        print("Calling error - missing inputs.  Expecting " +
                "salesforce_type client_type client_emaillist\n")
         return
 
@@ -31,22 +31,22 @@ def main():
 
     interactivemode = False
     if '-interactivemode' in sys.argv:
-        print "interactivemode"
+        print("interactivemode")
         interactivemode = True
 
     # Setup Logging to File
     sys_stdout_previous_state = sys.stdout
     sys.stdout = open(join(exporter_root, '..\\exporter.log'), 'w')
-    print "Exporter Startup"
+    print("Exporter Startup")
 
     exporter_directory = join(exporter_root, "Clients\\" + client_type)
-    print "Setting Exporter Directory: " + exporter_directory
+    print("Setting Exporter Directory: " + exporter_directory)
 
     # Export Data
-    print "\n\nExporter - Export Data Process\n\nThis process can take up to a couple of minutes depending on your Internet connection..."
+    print("\n\nExporter - Export Data Process\n\nThis process can take up to a couple of minutes depending on your Internet connection...")
     process_data(exporter_directory, salesforce_type, client_type, client_emaillist, sys_stdout_previous_state, emailattachments, emailonsuccess)
 
-    print "\n\nExporter process completed\n"
+    print("\n\nExporter process completed\n")
 
 def process_data(exporter_directory, salesforce_type, client_type, client_emaillist, sys_stdout_previous_state, emailattachments, emailonsuccess):
     """Process Data based on data_mode"""
@@ -97,7 +97,7 @@ def process_data(exporter_directory, salesforce_type, client_type, client_emaill
         text_file.write(output_log)
     
     #Write log to stdout
-    print output_log
+    print(output_log)
 
     if not "Error" in subject:
         subject += " Successful"
@@ -152,7 +152,7 @@ def export_dataloader(exporter_directory, client_type, salesforce_type):
                     + " " + salesforce_type + " "  + client_type + " " + export_name)
 
         message = "Starting Export Process: " + bat_file
-        print message
+        print(message)
         return_stdout += message + "\n"
         export_process = Popen(bat_file, stdout=PIPE, stderr=PIPE)
 

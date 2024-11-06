@@ -1,0 +1,78 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="Opportunity_Prod"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          scope="prototype">
+      <description>Opportunity job gets Opportunity info from salesforce and saves info into a CSV file.</description>
+        <property name="name" value="Opportunity_Prod"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="false"/>
+                <entry key="sfdc.debugMessagesFile" value="c:\dataloader\samples\status\sfdcSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://un-cruise.my.salesforce.com"/> 
+                <entry key="sfdc.username" value="daveb@uncruise.com"/>
+                <entry key="sfdc.password" value="85571243ba6dce0c8de3d43cf8f44d385fb4db900ed99dd6d54602b5f130e0689b4dc4c519e3b698ecfe48d2493f48900f3eb716aab8b5e798fb5fc54f857612"/>
+                <entry key="process.encryptionKeyFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\DataLoader\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Opportunity"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL" value="SELECT Id, StageName, First_Cruise__c, First_Payment_Date__c, BookingNo__c FROM Opportunity WHERE Reservation_Sync_Request__c = true"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\DataLoader\Opportunity.sdl"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="dataAccess.name" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\Export\Opportunity-Prod.csv"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="Account_Prod"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          scope="prototype">
+      <description>Account job gets Account info from salesforce and saves info into a CSV file.</description>
+        <property name="name" value="Account_Prod"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="false"/>
+                <entry key="sfdc.debugMessagesFile" value="c:\dataloader\samples\status\sfdcSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://un-cruise.my.salesforce.com"/> 
+                <entry key="sfdc.username" value="daveb@uncruise.com"/>
+                <entry key="sfdc.password" value="85571243ba6dce0c8de3d43cf8f44d385fb4db900ed99dd6d54602b5f130e0689b4dc4c519e3b698ecfe48d2493f48900f3eb716aab8b5e798fb5fc54f857612"/>
+                <entry key="process.encryptionKeyFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\DataLoader\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL" value="SELECT Id, Name FROM Account WHERE Reservation_Sync_Request__c = true"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\DataLoader\Account.sdl"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="dataAccess.name" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\Export\Account-Prod.csv"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="Contact_Prod"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          scope="prototype">
+      <description>Contact job gets Contact info from salesforce and saves info into a CSV file.</description>
+        <property name="name" value="Contact_Prod"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="false"/>
+                <entry key="sfdc.debugMessagesFile" value="c:\dataloader\samples\status\sfdcSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://un-cruise.my.salesforce.com"/> 
+                <entry key="sfdc.username" value="daveb@uncruise.com"/>
+                <entry key="sfdc.password" value="85571243ba6dce0c8de3d43cf8f44d385fb4db900ed99dd6d54602b5f130e0689b4dc4c519e3b698ecfe48d2493f48900f3eb716aab8b5e798fb5fc54f857612"/>
+                <entry key="process.encryptionKeyFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\DataLoader\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Contact"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL" value="SELECT Id, Name FROM Contact WHERE Reservation_Sync_Request__c = true"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\DataLoader\Contact.sdl"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="dataAccess.name" value="C:\repo\Salesforce-Exporter-Private\Clients\UCA\Salesforce-Exporter\Clients\UCA\Export\Contact-Prod.csv"/>
+            </map>
+        </property>
+    </bean>
+</beans>
